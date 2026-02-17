@@ -12,13 +12,14 @@ var app = builder
 
 builder
     .AddYarp("reverse-proxy")
-    .WithHostPort(8080)
+    // .WithHostPort(80) // 👈 Doesn't work because this is a privileged port; only `sudo dotnet run` can bind to it.
     .WithConfiguration(yarp =>
     {
-        yarp.AddRoute(app).WithMatchHosts("localhost", "api.local");
+        yarp.AddRoute(app).WithMatchHosts("localhost", "api.localhost");
     });
 
 builder.Build().Run();
 
+// https://github.com/dotnet/aspire/issues/5508
 // Dump the aspire config
 // dotnet run ./apphost.cs --publisher manifest --output-path aspire-manifest.json

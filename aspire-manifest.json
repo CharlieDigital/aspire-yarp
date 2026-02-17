@@ -30,6 +30,8 @@
       "env": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "API_HTTP": "{api.bindings.http.url}",
+        "REVERSEPROXY__ROUTES__route0__MATCH__HOSTS__0": "localhost",
+        "REVERSEPROXY__ROUTES__route0__MATCH__HOSTS__1": "api.localhost",
         "REVERSEPROXY__ROUTES__route0__MATCH__PATH": "/{**catchall}",
         "REVERSEPROXY__ROUTES__route0__CLUSTERID": "cluster_api",
         "REVERSEPROXY__CLUSTERS__cluster_api__DESTINATIONS__destination1__ADDRESS": "http://api",
@@ -40,6 +42,7 @@
           "scheme": "http",
           "protocol": "tcp",
           "transport": "http",
+          "port": 80,
           "targetPort": 5000
         }
       }
